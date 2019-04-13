@@ -5,28 +5,60 @@ import 'package:oblyk/api/cragApi.dart';
 import 'package:oblyk/entities/Crag/crag.dart';
 import 'crag.dart';
 import 'package:oblyk/utils/markerType.dart';
+import 'package:oblyk/entities/Crag/cragsResponse.dart';
 
 
 class MapWidget extends State {
 
   FlutterMap map;
   DateTime lastMarkerLoading;
-  // Default coordinates : Rennes
   LatLng coordinates;
   double zoom;
 
 
+  MapWidget(){
+    initLocation();
+  }
+
   Widget build(BuildContext context) {
 
     // Init markers with current position
-    initLocation();
-    loadMarkers('48.0833', '-1.6833');
+    loadMarkers(this.coordinates.latitude.toString(), this.coordinates.longitude.toString());
 
-    map = new FlutterMap(
+    map = initMap();
+
+    return Container(
+      child: new FutureBuilder(
+          future: getCrags(this.coordinates.latitude.toString(), this.coordinates.longitude.toString()),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if(snapshot.hasData && snapshot.data != null){
+              cragsToMarker(snapshot.data);
+              return map;
+            }
+            else{
+              return new Container();
+            }
+          }
+      ),
+    );
+  }
+
+  /** Init coordinates */
+  void initLocation() {
+    this.coordinates = new LatLng(48.111339, -1.68002);
+    this.zoom = 10.0;
+  }
+
+
+  /** Init map */
+  FlutterMap initMap(){
+    return new FlutterMap(
       options: new MapOptions(
         center: this.coordinates,
         onPositionChanged:  (position, isGesture) {
-          // When position change --> reload markers
+          // When position change --> update coordinates & reload markers
+          this.coordinates.latitude = position.center.latitude;
+          this.coordinates.longitude = position.center.longitude;
           loadMarkers(position.center.latitude.toString(), position.center.longitude.toString());
         },
         zoom: this.zoom,
@@ -40,38 +72,35 @@ class MapWidget extends State {
           },
         ),
         new MarkerLayerOptions(
-          markers: []
+            markers: []
         )
       ],
     );
-
-    return map;
   }
-
-  void initLocation() {
-    this.coordinates = new LatLng(48.111339, -1.68002);
-    this.zoom = 10.0;
-  }
-
-
 
 
   /** Load markers from Oblyk API */
   void loadMarkers(String lat, String lng){
     // Check if last loading is not less than a second ago
-    if(lastMarkerLoading == null || DateTime.now().isAfter(lastMarkerLoading.add(new Duration(seconds:1)))){
+    if(lastMarkerLoading == null || DateTime.now().isAfter(lastMarkerLoading.add(new Duration(milliseconds:500)))){
       lastMarkerLoading = new DateTime.now();
       // Get markers according to location
       getCrags(lat, lng).then((response) {
         lastMarkerLoading = new DateTime.now();
-        List<Marker> markers = [];
-        response.data.crags.forEach((crag) => markers.add(createNewMarker(crag)));
-        map.layers.removeLast();
-        map.layers.add(new MarkerLayerOptions(markers: markers));
+        cragsToMarker(response);
       });
     }
   }
 
+  /** Transform list of crags into list of markers */
+  void cragsToMarker(CragsResponse response){
+    List<Marker> markers = [];
+    response.data.crags.forEach((crag) => markers.add(createNewMarker(crag)));
+    map.layers.removeLast();
+    map.layers.add(new MarkerLayerOptions(markers: markers));
+  }
+
+  /** Crate marker from crag */
   Marker createNewMarker(Crag crag){
     // Transform a crag into a marker
     return new Marker(

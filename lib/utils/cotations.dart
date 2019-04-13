@@ -3,6 +3,8 @@ int getCotationColor(String cotation){
   switch (cotation) {
     // Cotations 1
     case "1": return COTATION_1A;
+    case "1-": return COTATION_1A;
+    case "1+": return COTATION_1A;
     case "1a": return COTATION_1A;
     case "1a+": return COTATION_1A_PLUS;
     case "1b": return COTATION_1B;
@@ -11,6 +13,8 @@ int getCotationColor(String cotation){
     case "1c+": return COTATION_1C_PLUS;
     // Cotations 2
     case "2": return COTATION_2A;
+    case "2-": return COTATION_2A;
+    case "2+": return COTATION_2A;
     case "2a": return COTATION_2A;
     case "2a+": return COTATION_2A_PLUS;
     case "2b": return COTATION_2B;
@@ -19,6 +23,8 @@ int getCotationColor(String cotation){
     case "2c+": return COTATION_2C_PLUS;
     // Cotations 3
     case "3": return COTATION_3A;
+    case "3-": return COTATION_3A;
+    case "3+": return COTATION_3A;
     case "3a": return COTATION_3A;
     case "3a+": return COTATION_3B_PLUS;
     case "3b": return COTATION_3B;
@@ -27,6 +33,8 @@ int getCotationColor(String cotation){
     case "3c+": return COTATION_3C_PLUS;
     // Cotations 4
     case "4": return COTATION_4A;
+    case "4-": return COTATION_4A;
+    case "4+": return COTATION_4A;
     case "4a": return COTATION_4A;
     case "4a+": return COTATION_4B_PLUS;
     case "4b": return COTATION_4B;
@@ -35,6 +43,8 @@ int getCotationColor(String cotation){
     case "4c+": return COTATION_4C_PLUS;
     // Cotations 5
     case "5": return COTATION_5A;
+    case "5-": return COTATION_5A;
+    case "5+": return COTATION_5A;
     case "5a": return COTATION_5A;
     case "5a+": return COTATION_5B_PLUS;
     case "5b": return COTATION_5B;
@@ -43,6 +53,8 @@ int getCotationColor(String cotation){
     case "5c+": return COTATION_5C_PLUS;
     // Cotations 6
     case "6": return COTATION_6A;
+    case "6-": return COTATION_6A;
+    case "6+": return COTATION_6A;
     case "6a": return COTATION_6A;
     case "6a+": return COTATION_6B_PLUS;
     case "6b": return COTATION_6B;
@@ -51,6 +63,8 @@ int getCotationColor(String cotation){
     case "6c+": return COTATION_6C_PLUS;
     // Cotations 7
     case "7": return COTATION_7A;
+    case "7-": return COTATION_7A;
+    case "7+": return COTATION_7A;
     case "7a": return COTATION_7A;
     case "7a+": return COTATION_7B_PLUS;
     case "7b": return COTATION_7B;
@@ -59,6 +73,8 @@ int getCotationColor(String cotation){
     case "7c+": return COTATION_7C_PLUS;
     // Cotations 8
     case "8": return COTATION_8A;
+    case "8-": return COTATION_8A;
+    case "8+": return COTATION_8A;
     case "8a": return COTATION_8A;
     case "8a+": return COTATION_8B_PLUS;
     case "8b": return COTATION_8B;
@@ -67,6 +83,8 @@ int getCotationColor(String cotation){
     case "8c+": return COTATION_8C_PLUS;
     // Cotations 9
     case "9": return COTATION_9A;
+    case "9-": return COTATION_9A;
+    case "9+": return COTATION_9A;
     case "9a": return COTATION_9A;
     case "9a+": return COTATION_9B_PLUS;
     case "9b": return COTATION_9B;

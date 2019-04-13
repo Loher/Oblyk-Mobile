@@ -8,7 +8,7 @@ import 'dart:convert';
 
 
 Future<CragsResponse> getCrags(String latitude, String longitude) async {
-  var url =  OBLYK_API_URL + 'crags/around-place/' + latitude + '/' + longitude + '/90';
+  var url =  OBLYK_API_URL + 'crags/around-place/' + latitude + '/' + longitude + '/100';
   final response = await http.get(url);
   print(response.body);
   return CragsResponse.fromJson(json.decode(response.body.toString()));
