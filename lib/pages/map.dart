@@ -3,7 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:oblyk/api/cragApi.dart';
 import 'package:oblyk/entities/Crag/crag.dart';
-import 'crag.dart';
+import 'package:oblyk/pages/crag/crag.dart';
 import 'package:oblyk/utils/markerType.dart';
 import 'package:oblyk/entities/Crag/cragsResponse.dart';
 
@@ -124,7 +124,7 @@ class MapWidget extends State {
   void onTapCrag(Crag crag){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => CragWidget(crag)),
+      MaterialPageRoute(builder: (context) => CragPage(crag)),
     );
   }
 

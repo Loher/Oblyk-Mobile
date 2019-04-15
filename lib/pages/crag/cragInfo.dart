@@ -4,54 +4,42 @@ import 'package:oblyk/utils/constants.dart';
 import 'package:oblyk/utils/cotations.dart';
 import 'package:oblyk/utils/translation.dart';
 
-class CragWidget extends StatelessWidget {
+class CragInfoWidget extends StatelessWidget {
 
   Crag crag;
   BuildContext currentContext;
 
-
-  CragWidget(this.crag);
+  CragInfoWidget(this.crag);
 
 
   @override
   Widget build(BuildContext context) {
     this.currentContext = context;
-    return Scaffold(
-      backgroundColor: Color(GREY_LIGHT_COLOR),
-        appBar: AppBar(
-            title: displayHeader(),
-            backgroundColor: Color(HEADER_BACKGROUND_COLOR)
-        ),
-        body: GridView.count(
-          crossAxisCount: 1,
-          padding: EdgeInsets.all(5.0),
-          childAspectRatio: 10.0 / 4.5,
-          children: <Widget>[
-            Card(
-              shape: Border(
+    return GridView.count(
+      crossAxisCount: 1,
+      padding: EdgeInsets.all(5.0),
+      childAspectRatio: 10.0 / 4.5,
+      children: <Widget>[
+        Card(
+            shape: Border(
                 top: BorderSide(
-                  width: 2, color: Color(BLUE_COLOR)
+                    width: 2, color: Color(BLUE_COLOR)
                 )
-              ),
-              child: Column(
-                children: <Widget>[
-                  getInfoTitle(),
-                  displayCity(),
-                  displayNumberOfLines(),
-                  displayCotations()
-                ],
-              )
+            ),
+            child: Column(
+              children: <Widget>[
+                getInfoTitle(),
+                displayCity(),
+                displayNumberOfLines(),
+                displayCotations()
+              ],
             )
-          ],
         )
+      ],
     );
+
   }
 
-
-
-  Text displayHeader(){
-    return Text(this.crag.label, style: TextStyle(fontFamily: FONT_KING, fontSize: 28));
-  }
 
 
   Padding getInfoTitle(){
@@ -72,8 +60,8 @@ class CragWidget extends StatelessWidget {
     if(this.crag?.city != null){
       return Padding(
         padding: EdgeInsets.only(
-          top: 0,
-          left: 10
+            top: 0,
+            left: 10
         ),
         child: Row(
           children: <Widget>[
@@ -104,8 +92,8 @@ class CragWidget extends StatelessWidget {
   Padding displayCotations(){
     return Padding(
         padding: EdgeInsets.only(
-          top: 5,
-          left: 10
+            top: 5,
+            left: 10
         ),
         child: Row(
             children: displayCotation()

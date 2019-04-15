@@ -6,5 +6,8 @@
   "cragInfoCotations": "Cotations ",
   "cragInfoFrom": "from ",
   "cragInfoTo": " to ",
-  "cragInfoUnknown": "unknown"
+  "cragInfoUnknown": "unknown",
+  "cragMenuInfo": "Info",
+  "crag_menu_sector": "Sectors",
+  "crag_menu_photo": "Photos"
 }
