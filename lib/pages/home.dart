@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:oblyk/utils/constants.dart';
 import 'package:flutter/widgets.dart';
 import 'package:oblyk/widgets/svgWidget.dart';
-import 'package:oblyk/widgets/drawer.dart';
+import 'package:oblyk/widgets/menu.dart';
+import 'package:oblyk/widgets/menuLogin.dart';
 import 'map.dart';
 
 class HomeWidget extends State {
@@ -24,7 +25,7 @@ class HomeWidget extends State {
               child: new Svg('assets/img/logo-oblyk.svg', 35, 35, onTapLogoCallback),
             )
         ),
-        drawer: DrawerMenu(),
+        drawer: getMenu(context),
         body: new Map()
     );
   }
@@ -33,6 +34,14 @@ class HomeWidget extends State {
 
   void onTapLogoCallback(){
     _scaffoldKey.currentState.openDrawer();
+  }
+
+  Drawer getMenu(BuildContext context){
+    // TODO : manage connexion
+    if(true){
+      return new MenuLogin(context);
+    }
+    return new Menu(context);
   }
 
 }

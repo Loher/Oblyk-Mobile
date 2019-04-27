@@ -1,5 +1,9 @@
 {
   "appName": "Oblyk",
+  "connexionTitle": "Connexion",
+  "connexionLogin": "Login",
+  "connexionPwd": "Password",
+  "connexionButton": "Connexion",
   "cragInfoTitle": "Information",
   "cragInfoCity": "City of ",
   "cragInfoLines": " lines",
