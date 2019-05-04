@@ -35,7 +35,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_map: any
+  flutter_map: ^0.5.0+1
   build_runner: ^1.0.0
   json_serializable: ^2.1.1
 

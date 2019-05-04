@@ -65,7 +65,7 @@ class CragWidget extends State<CragPage> {
     this.bodyWidgets = [
       new CragInfoWidget(this.crag),
       new CragSectorWidget(this.crag),
-      new CragPhotoWidget(this.crag)
+      new CragPhoto(this.crag)
     ];
   }
 

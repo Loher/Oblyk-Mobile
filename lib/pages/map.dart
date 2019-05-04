@@ -14,10 +14,11 @@ class MapWidget extends State {
   DateTime lastMarkerLoading;
   LatLng coordinates;
   double zoom;
-
+  MarkerLayerOptions layerOptions;
 
   MapWidget(){
     initLocation();
+    initLayerOptions();
   }
 
   Widget build(BuildContext context) {
@@ -49,6 +50,12 @@ class MapWidget extends State {
     this.zoom = 10.0;
   }
 
+  void initLayerOptions(){
+    this.layerOptions = new MarkerLayerOptions(
+      markers: []
+    );
+  }
+
 
   /** Init map */
   FlutterMap initMap(){
@@ -71,9 +78,7 @@ class MapWidget extends State {
             'id': 'mapbox.streets',
           },
         ),
-        new MarkerLayerOptions(
-            markers: []
-        )
+        this.layerOptions
       ],
     );
   }
